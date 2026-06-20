@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ザ・サウンド・オブ シングルス SR — Yushu Tan</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .volume-hero { padding: 7rem 2rem 2rem; text-align: center; max-width: 600px; margin: 0 auto; }
+    .volume-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2px; background: #ddd; }
+    .volume-grid .page-item { aspect-ratio: 3/4; overflow: hidden; background: #f5f2ed; cursor: pointer; position: relative; }
+    .volume-grid .page-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .volume-grid .page-item:hover img { transform: scale(1.03); }
+    .page-num { position: absolute; top: 4px; right: 6px; font-size: 0.6rem; color: rgba(0,0,0,0.3); background: rgba(255,255,255,0.7); padding: 1px 4px; }
+    .back-link { display: inline-block; margin: 1rem 0 2rem; font-size: 0.75rem; color: var(--text-dim); letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="/jp/" class="nav-brand">Yushu Tan</a>
+      <ul class="nav-links">
+        <li><a href="/jp/">ホーム</a></li>
+        <li><a href="/jp/sr400.html" class="active">SR400</a></li>
+        <li><a href="/jp/coffee.html">珈琲</a></li>
+      </ul>
+      <button class="lang-toggle" onclick="location.href='/en/sr400/vol5.html'">English</button>
+    </div>
+  </nav>
+
+  <div class="volume-hero">
+    <div class="section-label">SR400 &middot; Vol.5</div>
+    <h1>ザ・サウンド・オブ<br>シングルス SR</h1>
+    <div class="section-divider"></div>
+    <p><a href="/jp/sr400.html" class="back-link">&larr; SR400に戻る</a></p>
+  </div>
+
+  <div class="volume-grid" id="gallery"></div>
+
+  <div class="lightbox"><button class="lightbox-close">&times;</button><img src="" alt=""><div class="lightbox-caption"></div></div>
+
+  <footer><div class="brand">Yushu Tan</div></footer>
+  <script src="/js/main.js"></script>
+  <script>
+  var totalPages = 132;
+  var imgPath = "sr400/vol5";
+  var gallery = document.getElementById("gallery");
+  for (var i = 0; i < totalPages; i++) {
+    var num = String(i).padStart(4, "0");
+    var item = document.createElement("div");
+    item.className = "page-item";
+    item.innerHTML = '<span class="page-num">' + (i+1) + '</span><img src="/assets/images/' + imgPath + '/thumbs/' + num + '.jpg" data-full="/assets/images/' + imgPath + '/gallery/' + num + '.jpg" alt="Page ' + (i+1) + '" loading="lazy">';
+    (function(idx) {
+      item.addEventListener("click", function() {
+        var lb = document.querySelector(".lightbox");
+        lb.querySelector("img").src = this.querySelector("img").dataset.full;
+        lb.querySelector(".lightbox-caption").textContent = "Page " + (idx+1) + " / " + totalPages;
+        lb.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    })(i);
+    gallery.appendChild(item);
+  }
+  </script>
+</body>
+</html>
