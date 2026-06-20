@@ -87,7 +87,7 @@ nav {
 
 .hero-photo {
   position: absolute; inset: 0;
-  background: url('/assets/images/hero/sr400_hero.jpg') center/cover no-repeat;
+  background: url('/assets/images/hero/sr400_hero.jpg?v=3') center/cover no-repeat;
   opacity: 1;
 }
 
