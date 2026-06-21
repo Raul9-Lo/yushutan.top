@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ベスト・オブ コーヒー — Yushu Tan</title>
+  <title>Best of Coffee — 鱼叔叹</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
     .volume-hero { padding: 7rem 2rem 2rem; text-align: center; max-width: 600px; margin: 0 auto; }
@@ -18,28 +18,31 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="/jp/" class="nav-brand">Yushu Tan</a>
+      <a href="/zh/" class="nav-brand">鱼叔叹</a>
       <ul class="nav-links">
-        <li><a href="/jp/">ホーム</a></li>
-        <li><a href="/jp/sr400.html">SR400</a></li>
-        <li><a href="/jp/coffee.html" class="active">珈琲</a></li>
+        <li><a href="/zh/">首页</a></li>
+        <li><a href="/zh/sr400.html">SR400</a></li>
+        <li><a href="/zh/coffee.html" class="active">咖啡</a></li>
       </ul>
-      <div class="lang-switcher"><a href="/en/coffee/discover.html" class="lang-toggle">English</a><a href="/zh/coffee/discover.html" class="lang-toggle">中文</a></div>
+      <div class="lang-switcher">
+        <a href="/en/coffee/discover.html" class="lang-toggle">English</a>
+        <a href="/jp/coffee/discover.html" class="lang-toggle">日本語</a>
+      </div>
     </div>
   </nav>
 
   <div class="volume-hero">
-    <div class="section-label">珈琲 &middot; ベスト・オブ・コーヒー</div>
-    <h1>ベスト・オブ<br>コーヒー</h1>
+    <div class="section-label">咖啡 &middot; Discover Japan</div>
+    <h1>Best of<br>Coffee</h1>
     <div class="section-divider"></div>
-    <p><a href="/jp/coffee.html" class="back-link">&larr; 珈琲に戻る</a></p>
+    <p><a href="/zh/coffee.html" class="back-link">&larr; 返回咖啡</a></p>
   </div>
 
   <div class="volume-grid" id="gallery"></div>
 
   <div class="lightbox"><button class="lightbox-close">&times;</button><img src="" alt=""><div class="lightbox-caption"></div></div>
 
-  <footer><div class="brand">Yushu Tan</div></footer>
+  <footer><div class="brand">鱼叔叹</div></footer>
   <script src="/js/main.js"></script>
   <script>
   var totalPages = 165;
@@ -49,12 +52,12 @@
     var num = String(i).padStart(4, "0");
     var item = document.createElement("div");
     item.className = "page-item";
-    item.innerHTML = '<span class="page-num">' + (i+1) + '</span><img src="/assets/images/' + imgPath + '/thumbs/' + num + '.jpg" data-full="/assets/images/' + imgPath + '/gallery/' + num + '.jpg" alt="Page ' + (i+1) + '" loading="lazy">';
+    item.innerHTML = '<span class="page-num">' + (i+1) + '</span><img src="/assets/images/' + imgPath + '/thumbs/' + num + '.jpg" data-full="/assets/images/' + imgPath + '/gallery/' + num + '.jpg" alt="第 ' + (i+1) + ' 页" loading="lazy">';
     (function(idx) {
       item.addEventListener("click", function() {
         var lb = document.querySelector(".lightbox");
         lb.querySelector("img").src = this.querySelector("img").dataset.full;
-        lb.querySelector(".lightbox-caption").textContent = "Page " + (idx+1) + " / " + totalPages;
+        lb.querySelector(".lightbox-caption").textContent = "第 " + (idx+1) + " 页 / 共 " + totalPages + " 页";
         lb.classList.add("active");
         document.body.style.overflow = "hidden";
       });
